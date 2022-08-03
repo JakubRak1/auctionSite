@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #ff5a00;
+  border-radius: 1rem;
+  background-color: #83afbc;
 }
 
 .logo {
@@ -45,4 +46,126 @@
   margin-left: 30%;
   margin-right: 30%;
   font-weight: bold;
+}
+
+.app {
+  display: flex;
+  margin: 2rem 5% 0 5%;
+  justify-content: center;
+}
+
+.label_container {
+  width: 25%;
+  margin-right: 1.25%;
+}
+.auction_container {
+  width: 62.5%;
+  margin-left: 1.25%;
+  background-color: aqua;
+}
+
+.title_label {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.text_label {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.balance {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  /* background-image: linear-gradient(
+    to top left,
+    #ffb003,
+    #ffcb03
+  ); */
+}
+.loan {
+  flex-direction: column;
+  border-radius: 1rem;
+  margin-bottom: 10px;
+  padding: 3rem 4rem;
+  background-color: #015a6c;
+  color: #ffffff;
+}
+.loan_action {
+  display: flex;
+  flex-direction: column;
+}
+.label_input {
+  text-align: center;
+  border: 0.5px solid;
+  border-radius: 5rem;
+  border-color: black;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+}
+
+.label_input:focus {
+  outline: none;
+}
+.take_loan {
+  width: fit-content;
+  margin-top: 10px;
+  border: 1.5px solid black;
+  align-self: center;
+}
+.add_item {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin-bottom: 10px;
+  border-radius: 1rem;
+  background-color: #c3dae0;
+}
+
+.chose_category {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.add_item_text {
+  margin: 5px 5px 5px 25px;
+  width: 120px;
+}
+.category_list {
+  margin-left: 15px;
+  text-align: center;
+  width: 140px;
+}
+
+.input_item {
+  margin-left: 15px;
+  width: 150px;
+  text-align: center;
+}
+
+.desc_input {
+  height: 100px;
+  text-align: center;
+}
+
+.add_itembtn {
+  margin-left: 165px;
+  width: 160px;
+  margin-bottom: 25px;
+}
+
+.message_container {
+  padding: 3rem 4rem;
+  border-radius: 1rem;
+  background-color: #015a6c;
+  color: white;
+}
+
+.category {
+  max-width: 2rem;
+}
+.auction_container {
+  background-color: #303030;
+  color: white;
 }

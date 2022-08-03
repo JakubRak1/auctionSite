@@ -64,8 +64,96 @@
       </div>
     </nav>
 
-    <main class="app"></main>
+    <main class="app">
+      <div class="label_container">
+        <div class="balance">
+          <p class="title_label">Balance</p>
+          <p class="text_label">000$</p>
+        </div>
+        <div class="loan">
+          <p class="title_label">Take Loan</p>
+          <div class="loan_action"><input
+            type="number"
+            placeholder="Amount"
+            class="label_input loan_input"
+          />
+          <button class="take_loan">Take</button>
+          </div>
+        </div>
+        <div class="add_item">
+          <p class="title_label">Add item on auctions</p>
+          <div class="chose_category">
+            <p class="add_item_text">Chose category:</p>
+            <select class="category_list">
+              <option>Cars</option>
+              <option>AGD</option>
+              <option>Statment</option>
+            </select>
+          </div>
+          <div class="chose_category">
+            <p  class="add_item_text">Title:</p>
+            <input type="text" placeholder="Title"  class="input_item">
+            </input>
+          </div>
+          <div class="chose_category">
+            <p  class="add_item_text">Description:</p>
+            <textarea placeholder="Description" class="input_item desc_input"></textarea>
+          </div>
+          <div class="chose_category">
+            <p  class="add_item_text">Starting Bid:</p>
+            <input type="number" placeholder="Starting Bid" class="input_item">
+            </input>
+          </div>
+          <button class="add_itembtn">Add item on auction</button>
+        </div>
+        <div class="message_container">
+          <p class="title_label">Your messages</p>
+          <div class="all_messages">
+            <p class="message">Accept of sold item</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="auction_container">
+        <p class="title_label">
+          Current Auctions
+        </p>
+        <div class="auctions_list">
+          <p class="auction">
+            <img
+              src="/img/car.png"
+              alt="category"
+              class="category"
+            />
+            NEW Car Nissan last bid:
+            000$
+          </p>
+          <p class="auction">
+            <img
+              src="/img/fridge.png"
+              alt="category"
+              class="category"
+            />
+            Used Bosch Fridge last bid:
+            000$
+          </p>
+          <p class="auction">
+            <img
+              src="/img/house.png"
+              alt="category"
+              class="category"
+            />
+            Home 50m2 near Wisła last
+            bid: 000$
+          </p>
+        </div>
+        <form>
+          <p>You can sort by:</p>
+          <button>Time left</button>
+          <button>Highest bid</button>
+        </form>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
