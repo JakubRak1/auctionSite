@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="ie=edge"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/img/logo.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <title>AuctionSite</title>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION -->
+    <nav class="main_nav">
+      <div class="logo_container">
+        <img
+          src="/img/aukcja.png"
+          alt="Logo"
+          class="logo"
+        />
+        <p class="logo_title">
+          AuctionSite
+        </p>
+      </div>
+      <p class="welcome">
+        Please log in to continue
+      </p>
+      <div class="login_container">
+        <form class="login">
+          <input
+            type="text"
+            placeholder="Login"
+            maxlength="3"
+            class="login_input login_input--login"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            maxlength="3"
+            class="login_input login_input--password"
+          />
+        </form>
+        <button class="login_btn">
+          LOG IN
+        </button>
+      </div>
+    </nav>
+
+    <main class="app"></main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
