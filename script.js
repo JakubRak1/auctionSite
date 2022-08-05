@@ -1,7 +1,5 @@
 "use strict";
 
-$(".singlebox").selectator();
-
 const account1 = {
   name: "Jan Kowalski",
   login: "qwe",
@@ -23,3 +21,18 @@ const accounts = [
   account2,
   account3,
 ];
+
+const lang = document.querySelector('.languge');
+const langPng = document.querySelector('.lang_png');
+const langTxt = document.querySelector('.lang_info');
+
+langPng.addEventListener('click', function(){
+  if(langTxt.value === 'ENG'){
+    console.log('zmien');
+    langTxt.innerHTML = 'PL';
+  }
+});
+
+
+
+

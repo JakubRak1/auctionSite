@@ -46,8 +46,28 @@
 }
 
 .languge {
-  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  cursor: pointer;
+  z-index: 1;
 }
+
+.lang_png {
+width: 18px;
+height: 18px;
+background-color: white;
+border: 2px solid white;
+z-index: -1;
+}
+
+.lang_info {
+  margin: 0;
+  background-color: white;
+  border: 2px solid white;
+  z-index: -1;
+}
+
 
 /* App */
 .app {

@@ -19,11 +19,8 @@
       rel="stylesheet"
       href="style.css"
     />
-    <link rel="stylesheet"
-    href="fm.selectator.jquery.css"
-    />
-
     <title>AuctionSite</title>
+  
   </head>
   <body>
     <nav class="main_nav">
@@ -52,10 +49,10 @@
         </button>
       </div>
       <button>Register New Account</button>
-      <select class="languge singlebox">
-        <option value="1" data-right="images/ENGS.png" selected>ENG</option>
-        <option value="2" data-right="img/PL.png">PL</option>
-      </select>
+      <div class="languge">
+        <img class = "lang_png" src="img/ENG.png"/>
+        <p class="lang_info">ENG</p>
+      </div>
     </nav>
 
     <main class="app">
@@ -150,10 +147,5 @@
       <div class="pop-window">asafsdfsdfsdfsdfsd</div>
     </main>
     <script src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="fm.selectator.jquery.js"></script>
-    <script>
-       $('.singlebox').selectator();
-    </script>
   </body>
 </html>
