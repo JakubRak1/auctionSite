@@ -1,5 +1,7 @@
 "use strict";
 
+$(".singlebox").selectator();
+
 const account1 = {
   name: "Jan Kowalski",
   login: "qwe",

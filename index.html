@@ -15,34 +15,23 @@
       type="image/png"
       href="/img/logo.png"
     />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
-      rel="stylesheet"
-    />
-
     <link
       rel="stylesheet"
       href="style.css"
     />
+    <link rel="stylesheet"
+    href="fm.selectator.jquery.css"
+    />
+
     <title>AuctionSite</title>
   </head>
   <body>
-    <!-- TOP NAVIGATION -->
     <nav class="main_nav">
       <div class="logo_container">
-        <img
-          src="/img/aukcja.png"
-          alt="Logo"
-          class="logo"
-        />
-        <p class="logo_title">
-          AuctionSite
-        </p>
+        <img src="/img/auctionLogo.png"
+        alt="Logo"
+        class="logo"/>
       </div>
-      <p class="welcome">
-        Please log in to continue
-      </p>
       <div class="login_container">
         <form class="login">
           <input
@@ -62,6 +51,11 @@
           LOG IN
         </button>
       </div>
+      <button>Register New Account</button>
+      <select class="languge singlebox">
+        <option value="1" data-right="images/ENGS.png" selected>ENG</option>
+        <option value="2" data-right="img/PL.png">PL</option>
+      </select>
     </nav>
 
     <main class="app">
@@ -153,7 +147,13 @@
           <button>Highest bid</button>
         </form>
       </div>
+      <div class="pop-window">asafsdfsdfsdfsdfsd</div>
     </main>
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="fm.selectator.jquery.js"></script>
+    <script>
+       $('.singlebox').selectator();
+    </script>
   </body>
 </html>
