@@ -1,4 +1,9 @@
 /* Nav Bar */
+
+.disp_none {
+  display: none;
+}
+
 .main_nav {
   display: flex;
   align-items: center;
@@ -10,20 +15,14 @@
 .logo {
   max-height: 4rem;
 }
-
-.logo_title {
-  font-size: 2rem;
-  font-weight: bolder;
-}
-
-.logo_container {
+.login_container {
   display: flex;
   flex-direction: row;
 }
-
 .login {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .login_input {
@@ -39,13 +38,51 @@
   outline: none;
 }
 
-.login_btn {
-  margin-left: 30%;
-  margin-right: 30%;
+#login_btn {
+  margin: 5px 10px 5px 0;
+  width: 70%;
+}
+
+.nav_btns {
+  width: 100%;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system,
+    BlinkMacSystemFont, "Roboto",
+    sans-serif;
+  border-radius: 6px;
+  border: none;
+
+  background: #c3dae0;
+  color: black;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.nav_btns:hover {
+  background-color: #015a6c;
+  color: white;
+}
+
+.nav_btns:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.option_btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30px;
 }
 
 .languge {
+  margin-top: 7px;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -54,20 +91,33 @@
 }
 
 .lang_png {
-width: 18px;
-height: 18px;
-background-color: white;
-border: 2px solid white;
-z-index: -1;
+  width: 18px;
+  height: 18px;
+  background-color: #c3dae0;
+  border: 2px solid #c3dae0;
 }
+
+/* .lang_png:hover + .lang_info { -to do in JS
+  background-color: #015a6c;
+}
+
+.languge:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+} */
 
 .lang_info {
   margin: 0;
-  background-color: white;
-  border: 2px solid white;
-  z-index: -1;
+  background-color: #c3dae0;
+  border: 2px solid #c3dae0;
+  color: black;
 }
 
+#register_btn,
+#recover_btn {
+  margin-top: 5px;
+}
 
 /* App */
 .app {
@@ -75,17 +125,18 @@ z-index: -1;
   margin: 2rem 5% 0 5%;
   justify-content: center;
 }
-
+/* Left containers */
 .label_container {
   width: 25%;
   margin-right: 1.25%;
 }
-.auction_container {
-  width: 62.5%;
-  margin-left: 1.25%;
-  background-color: aqua;
-}
 
+.left_label,
+.auction_container {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  margin-bottom: 25px;
+}
 .title_label {
   font-weight: bold;
   font-size: 1.5rem;
@@ -97,94 +148,221 @@ z-index: -1;
   text-align: center;
   font-size: 1.2rem;
 }
-
-.balance {
-  border-radius: 1rem;
-  padding: 3rem 4rem;
-}
-.loan {
-  flex-direction: column;
-  border-radius: 1rem;
-  margin-bottom: 10px;
-  padding: 3rem 4rem;
-  background-color: #015a6c;
-  color: #ffffff;
-}
-.loan_action {
-  display: flex;
-  flex-direction: column;
-}
-.label_input {
+.sort_text_label {
   text-align: center;
-  border: 0.5px solid;
-  border-radius: 5rem;
-  border-color: black;
-  transition: all 0.3s;
-  margin-bottom: 10px;
+  font-size: 0.8rem;
 }
 
-.label_input:focus {
-  outline: none;
+.message_container,
+.your_auction {
+  background-color: #015a6c;
+  color: white;
 }
-.take_loan {
-  width: fit-content;
-  margin-top: 10px;
-  border: 1.5px solid black;
-  align-self: center;
+
+.message {
+  text-align: start;
 }
-.add_item {
-  padding-top: 48px;
-  padding-bottom: 48px;
-  margin-bottom: 10px;
-  border-radius: 1rem;
+
+.add_item,
+.your_acc {
   background-color: #c3dae0;
 }
 
-.chose_category {
+.left_btn {
+  align-items: center;
+  background-color: #83afbc;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui,
+    system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans",
+    Ubuntu, Oxygen, "Oxygen Sans",
+    Cantarell, "Droid Sans",
+    "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol",
+    "Lucida Grande", Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s
+      cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 0.167s
+      cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 0.167s
+      cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  margin-left: 15%;
+}
+
+.left_btn:hover,
+.left_btn:focus {
+  background-color: #16437e;
+  color: #ffffff;
+}
+
+.left_btn:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.left_btn:disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.3);
+}
+.sort_your_auctions {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
-}
-.add_item_text {
-  margin: 5px 5px 5px 25px;
-  width: 120px;
-}
-.category_list {
-  margin-left: 15px;
-  text-align: center;
-  width: 140px;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.input_item {
-  margin-left: 15px;
-  width: 150px;
-  text-align: center;
+.sorting_img {
+  width: 36px;
+  height: 36px;
+  padding: 0 30px 0 10px;
+  background-color: #c3dae0;
+  cursor: pointer;
+}
+.sort_text {
+  color: black;
+  background-color: #c3dae0;
+  margin: 0;
+  width: 6rem;
+  justify-self: center;
+  padding: 10px 10px 0 0;
+  cursor: pointer;
 }
 
-.desc_input {
-  height: 100px;
-  text-align: center;
+#acc_info {
+  margin-left: 25%;
+  margin-bottom: 10px;
 }
 
-.add_itembtn {
-  margin-left: 165px;
-  width: 160px;
-  margin-bottom: 25px;
+#logout {
+  margin-left: 32%;
+  margin-bottom: 10px;
 }
+/* Right containers */
 
-.message_container {
-  padding: 3rem 4rem;
-  border-radius: 1rem;
-  background-color: #015a6c;
+.auction_container {
+  width: 62.5%;
+  margin-left: 1.25%;
+  background-color: #678391;
   color: white;
+}
+
+.auctions_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 5px solid black;
+  border-radius: 15px;
+}
+
+.auction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .category {
+  margin-left: 1rem;
+  margin-right: 2rem;
   max-width: 2rem;
 }
-.auction_container {
-  background-color: #303030;
-  color: white;
+.sort_options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.right_sort {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #08546c;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0
+      0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0,
+    rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue",
+    Ubuntu, sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0 15px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all 0.2s,
+    box-shadow 0.08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 70%;
+}
+
+.right_sort:hover {
+  background-color: white;
+  color: black;
+}
+.right_select {
+  backface-visibility: hidden;
+  background-color: #08546c;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0
+      0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0,
+    rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue",
+    Ubuntu, sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0 15px;
+  outline: none;
+  overflow: hidden;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all 0.2s,
+    box-shadow 0.08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 70%;
 }
 
 .pop-window {

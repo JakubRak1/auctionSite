@@ -20,15 +20,14 @@
       href="style.css"
     />
     <title>AuctionSite</title>
-  
   </head>
   <body>
     <nav class="main_nav">
-      <div class="logo_container">
-        <img src="/img/auctionLogo.png"
+      <img
+        src="/img/auctionLogo.png"
         alt="Logo"
-        class="logo"/>
-      </div>
+        class="logo"
+      />
       <div class="login_container">
         <form class="login">
           <input
@@ -43,68 +42,138 @@
             maxlength="3"
             class="login_input login_input--password"
           />
+          <button
+            class="nav_btns"
+            id="login_btn"
+          >
+            LOG IN
+          </button>
         </form>
-        <button class="login_btn">
-          LOG IN
-        </button>
-      </div>
-      <button>Register New Account</button>
-      <div class="languge">
-        <img class = "lang_png" src="img/ENG.png"/>
-        <p class="lang_info">ENG</p>
+        <div class="option_btns">
+          <div class="languge">
+            <img
+              class="lang_png"
+              src="img/ENG.png"
+            />
+            <p class="lang_info">ENG</p>
+          </div>
+          <button
+            class="nav_btns"
+            id="register_btn"
+          >
+            Register New Account
+          </button>
+          <button
+            class="nav_btns"
+            id="recover_btn"
+          >
+            Recovery Password
+          </button>
+        </div>
       </div>
     </nav>
-
+    <!-- Main app -->
     <main class="app">
+      <!-- left content -->
       <div class="label_container">
-        <div class="balance">
-          <p class="title_label">Balance</p>
-          <p class="text_label">000$</p>
+        <div
+          class="left_label welcome_label"
+        >
+          <p class="title_label">
+            Welcome Back
+          </p>
+          <p class="text_label">
+            Testing Person
+          </p>
         </div>
-        <div class="loan">
-          <p class="title_label">Take Loan</p>
-          <div class="loan_action"><input
-            type="number"
-            placeholder="Amount"
-            class="label_input loan_input"
-          />
-          <button class="take_loan">Take</button>
-          </div>
-        </div>
-        <div class="add_item">
-          <p class="title_label">Add item on auctions</p>
-          <div class="chose_category">
-            <p class="add_item_text">Chose category:</p>
-            <select class="category_list">
-              <option>Cars</option>
-              <option>AGD</option>
-              <option>Statment</option>
-            </select>
-          </div>
-          <div class="chose_category">
-            <p  class="add_item_text">Title:</p>
-            <input type="text" placeholder="Title"  class="input_item">
-            </input>
-          </div>
-          <div class="chose_category">
-            <p  class="add_item_text">Description:</p>
-            <textarea placeholder="Description" class="input_item desc_input"></textarea>
-          </div>
-          <div class="chose_category">
-            <p  class="add_item_text">Starting Bid:</p>
-            <input type="number" placeholder="Starting Bid" class="input_item">
-            </input>
-          </div>
-          <button class="add_itembtn">Add item on auction</button>
-        </div>
-        <div class="message_container">
-          <p class="title_label">Your messages</p>
+
+        <div
+          class="left_label message_container"
+        >
+          <p class="title_label">
+            Your messages
+          </p>
           <div class="all_messages">
-            <p class="message">Accept of sold item</p>
+            <p
+              class="text_label message"
+            >
+              Testing message ...
+            </p>
           </div>
+        </div>
+
+        <div
+          class="left_label add_item"
+        >
+          <p class="title_label">
+            Add item on auctions
+          </p>
+          <button class="left_btn">
+            Add item on sale
+          </button>
+        </div>
+
+        <div
+          class="left_label your_auction"
+        >
+          <p class="title_label">
+            Your auctions
+          </p>
+          <div
+            class="your_auction_list"
+          >
+            <p class="text_label">
+              Testing Auction
+            </p>
+          </div>
+          <p class="sort_text_label">
+            Sort by:
+          </p>
+          <div
+            class="sort_your_auctions"
+          >
+            <img
+              class="sorting_img"
+              src="img/sell.png"
+            />
+            <p class="sort_text">
+              Your're selling
+            </p>
+          </div>
+          <div
+            class="sort_your_auctions"
+          >
+            <img
+              class="sorting_img"
+              src="img/buy.png"
+            />
+            <p class="sort_text">
+              Your're buying
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="left_label your_acc"
+        >
+          <p class="title_label">
+            Your account
+          </p>
+          <button
+            class="left_btn"
+            id="acc_info"
+          >
+            Account info
+          </button>
+          <button
+            class="left_btn"
+            id="logout"
+          >
+            Log out
+          </button>
         </div>
       </div>
-
+      <!-- Right content -->
       <div class="auction_container">
         <p class="title_label">
           Current Auctions
@@ -116,8 +185,7 @@
               alt="category"
               class="category"
             />
-            NEW Car Nissan last bid:
-            000$
+            Test Auction last bid: 000$
           </p>
           <p class="auction">
             <img
@@ -125,8 +193,7 @@
               alt="category"
               class="category"
             />
-            Used Bosch Fridge last bid:
-            000$
+            Test Auction last bid: 000$
           </p>
           <p class="auction">
             <img
@@ -134,18 +201,69 @@
               alt="category"
               class="category"
             />
-            Home 50m2 near Wisła last
-            bid: 000$
+            Test Auction Wisła last bid:
+            000$
           </p>
         </div>
         <form>
-          <p>You can sort by:</p>
-          <button>Time left</button>
-          <button>Highest bid</button>
+          <p class="sort_text_label">
+            You can sort by:
+          </p>
+          <div class="sort_options">
+            <button class="right_sort">
+              Time left
+            </button>
+            <button class="right_sort">
+              Highest bid
+            </button>
+            <button class="right_sort">
+              Lovest bid
+            </button>
+            <button class="right_sort">
+              Name
+            </button>
+            <select
+              class="right_select"
+            >
+              <option value="0">
+                Category :
+              </option>
+              <option value="1">
+                AGD
+              </option>
+              <option value="2">
+                Antique
+              </option>
+              <option value="3">
+                Cars
+              </option>
+              <option value="4">
+                Clothes
+              </option>
+              <option value="5">
+                Electronics
+              </option>
+              <option value="6">
+                Health
+              </option>
+              <option value="7">
+                Kid
+              </option>
+              <option value="8">
+                Real Estate
+              </option>
+              <option value="9">
+                Others
+              </option>
+            </select>
+          </div>
         </form>
       </div>
-      <div class="pop-window">asafsdfsdfsdfsdfsd</div>
     </main>
+    <!-- Pop out window -->
+    <div class="pop-window">
+      asafsdfsdfsdfsdfsd
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
