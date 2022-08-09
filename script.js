@@ -48,9 +48,15 @@ const main = () => {
     document.querySelector(
       ".welcome_text"
     );
-  //Lang buttom
+  //Png buttons
   const lang =
     document.querySelector(".languge");
+  const sellSortBtn =
+    document.querySelector(
+      "#sell_sort"
+    );
+  const buySortBtn =
+    document.querySelector("#buy_sort");
   //Event listner//
 
   logBtn.addEventListener(
@@ -60,16 +66,16 @@ const main = () => {
       logIn();
     }
   );
-
+  //Btn changes colors with img
   lang.addEventListener(
     "mouseover",
     () => {
       selectBtnPng(
-        "lang_png",
+        ".lang_png",
         "lang_png_over"
       );
       selectBtnPng(
-        "lang_info",
+        ".lang_info",
         "lang_text_over"
       );
     }
@@ -79,16 +85,83 @@ const main = () => {
     "mouseout",
     () => {
       disSelectBtnPng(
-        "lang_png",
+        ".lang_png",
         "lang_png_over"
       );
       disSelectBtnPng(
-        "lang_info",
+        ".lang_info",
         "lang_text_over"
       );
     }
   );
 
+  sellSortBtn.addEventListener(
+    "mouseover",
+    () => {
+      selectBtnPng(
+        "#sort_sell_img",
+        "sorting_img_over"
+      );
+      document.querySelector(
+        "#sort_sell_img"
+      ).src = "img/sell_white.png";
+      selectBtnPng(
+        "#sort_sell_text",
+        "sort_text_over"
+      );
+    }
+  );
+
+  sellSortBtn.addEventListener(
+    "mouseout",
+    () => {
+      disSelectBtnPng(
+        "#sort_sell_img",
+        "sorting_img_over"
+      );
+      document.querySelector(
+        "#sort_sell_img"
+      ).src = "img/sell.png";
+      disSelectBtnPng(
+        "#sort_sell_text",
+        "sort_text_over"
+      );
+    }
+  );
+
+  buySortBtn.addEventListener(
+    "mouseover",
+    () => {
+      selectBtnPng(
+        "#sort_buy_img",
+        "sorting_img_over"
+      );
+      document.querySelector(
+        "#sort_buy_img"
+      ).src = "img/buy_white.png";
+      selectBtnPng(
+        "#sort_buy_text",
+        "sort_text_over"
+      );
+    }
+  );
+
+  buySortBtn.addEventListener(
+    "mouseout",
+    () => {
+      disSelectBtnPng(
+        "#sort_buy_img",
+        "sorting_img_over"
+      );
+      document.querySelector(
+        "#sort_buy_img"
+      ).src = "img/buy.png";
+      disSelectBtnPng(
+        "#sort_buy_text",
+        "sort_text_over"
+      );
+    }
+  );
   //Functions//
 
   const logIn = () => {
@@ -124,7 +197,7 @@ const main = () => {
   ) => {
     document
       .querySelector(
-        `.${selectedElementByClass}`
+        `${selectedElementByClass}`
       )
       .classList.add(`${className}`);
   };
@@ -134,31 +207,13 @@ const main = () => {
   ) => {
     document
       .querySelector(
-        `.${selectedElementByClass}`
+        `${selectedElementByClass}`
       )
       .classList.remove(`${className}`);
   };
 
   mainApp.classList.toggle("disp_none");
   mainApp.classList.toggle("app");
-  // const lang =
-  //   document.querySelector(".languge");
-  // const langPng = document.querySelector(
-  //   ".lang_png"
-  // );
-  // const langTxt = document.querySelector(
-  //   ".lang_info"
-  // );
-
-  // langPng.addEventListener(
-  //   "click",
-  //   function () {
-  //     if (langTxt.value === "ENG") {
-  //       console.log("zmien");
-  //       langTxt.innerHTML = "PL";
-  //     }
-  //   }
-  // );
 
   // for future pop up window
 

@@ -253,6 +253,23 @@
   cursor: pointer;
 }
 
+.sorting_img_over {
+  width: 36px;
+  height: 36px;
+  padding: 0 30px 0 10px;
+  background-color: #678391;
+  cursor: pointer;
+}
+.sort_text_over {
+  color: white;
+  background-color: #678391;
+  margin: 0;
+  width: 6rem;
+  justify-self: center;
+  padding: 10px 10px 0 0;
+  cursor: pointer;
+}
+
 #acc_info {
   margin-left: 25%;
   margin-bottom: 10px;
