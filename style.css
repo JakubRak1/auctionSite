@@ -97,21 +97,23 @@
   border: 2px solid #c3dae0;
 }
 
-/* .lang_png:hover + .lang_info { -to do in JS
-  background-color: #015a6c;
-}
-
-.languge:focus {
-  box-shadow: none;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-} */
-
 .lang_info {
   margin: 0;
   background-color: #c3dae0;
   border: 2px solid #c3dae0;
   color: black;
+}
+.lang_png_over {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #015a6c;
+  background-color: #015a6c;
+}
+.lang_text_over {
+  margin: 0;
+  background-color: #015a6c;
+  border: 2px solid #015a6c;
+  color: white;
 }
 
 #register_btn,
@@ -368,4 +370,8 @@
 .pop-window {
   opacity: 0;
   position: fixed;
+  left: 50%;
+  top: 50%;
+  background-color: black;
+  color: white;
 }
