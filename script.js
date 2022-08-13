@@ -1,10 +1,14 @@
 "use strict";
 // Data
+
 const main = () => {
   const account1 = {
     name: "Jan Kowalski",
     login: "qwe",
     password: "123",
+    email: "jankowalski@gmail.com",
+    adress: "Krzywa 10 Kraków",
+    phone: "887855697",
     messages: [],
     auctions: [],
   };
@@ -12,6 +16,9 @@ const main = () => {
     name: "Mateusz Bendarski",
     login: "asd",
     password: "321",
+    email: "mateuszek@gmail.com",
+    adress: "Pokrzeczna 10 Kraków",
+    phone: "785987456",
     messages: [],
     auctions: [],
   };
@@ -19,6 +26,9 @@ const main = () => {
     name: "Magdalena Biernacz",
     login: "zxc",
     password: "987",
+    email: "madzia@gmail.com",
+    adress: "Krzywa 10 Wrocław",
+    phone: "236547892",
     messages: [],
     auctions: [],
   };
@@ -28,11 +38,15 @@ const main = () => {
     account2,
     account3,
   ];
-  let mainApp =
-    document.querySelector("#main");
+
   let currentAccount;
+
   // DOM Elements//
   //Log in elements
+
+  const mainApp =
+    document.querySelector("#main");
+
   const logBtn = document.querySelector(
     "#login_btn"
   );
@@ -47,6 +61,26 @@ const main = () => {
   const welcomeText =
     document.querySelector(
       ".welcome_text"
+    );
+  const popWindow =
+    document.querySelector(
+      ".pop_window"
+    );
+  const titlePopWindow =
+    document.querySelector(
+      "#pop_title"
+    );
+  const textPopWindow =
+    document.querySelector("#pop_text");
+
+  const btnClosePopWindow =
+    document.querySelector(
+      "#close_pop_window"
+    );
+
+  const btnRegisterNewAcc =
+    document.querySelector(
+      "#register_btn"
     );
   //Png buttons
   const lang =
@@ -66,7 +100,22 @@ const main = () => {
       logIn();
     }
   );
+  btnClosePopWindow.addEventListener(
+    "click",
+    (e) => {
+      e.preventDefault();
+      closeWindow();
+    }
+  );
+  btnRegisterNewAcc.addEventListener(
+    "click",
+    (e) => {
+      e.preventDefault();
+      registerWindow();
+    }
+  );
   //Btn changes colors with img
+
   lang.addEventListener(
     "mouseover",
     () => {
@@ -183,11 +232,19 @@ const main = () => {
         "";
       logName.blur();
       logPass.blur();
+      dispPopWindow(
+        "Login Sucusefull",
+        "You have been log-in"
+      );
     } else {
       logName.value = logPass.value =
         "";
       logName.blur();
       logPass.blur();
+      dispPopWindow(
+        "Login Failed",
+        "You provided wrong login or password"
+      );
     }
   };
 
@@ -212,6 +269,158 @@ const main = () => {
       .classList.remove(`${className}`);
   };
 
+  const dispPopWindow = (
+    title,
+    text
+  ) => {
+    popWindow.classList.toggle(
+      "disp_none"
+    );
+    titlePopWindow.textContent = title;
+    textPopWindow.textContent = text;
+  };
+
+  const closeWindow = () => {
+    popWindow.classList.toggle(
+      "disp_none"
+    );
+  };
+
+  const registerWindow = () => {
+    popWindow.classList.toggle(
+      "disp_none"
+    );
+    popWindow.innerHTML = `<h1
+    class="title_label"
+  >
+    Register New Account
+  </h1>
+  <p
+    class="text_label"
+  >
+    Please provide bellow informations
+  </p>
+  <form>
+    <div class="submit_container">
+      <div class="column_container">
+        <p class="submit_title">First Name :</p>
+        <p class="submit_title">Last Name :</p>
+        <p class="submit_title">Login:</p>
+        <p class="submit_title">Password :</p>
+        <p class="submit_title">Confirm Password :</p>
+        <p class="submit_title">Email :</p>
+        <p class="submit_title">Street :</p>
+        <p class="submit_title">Town :</p>
+        <p class="submit_title">ZIP Code :</p>
+        <p class="submit_title">Phone number :</p>
+      </div>
+      <div class="column_container">
+        <input
+          type="text"
+          placeholder="First Name"
+          maxlength="15"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          maxlength="15"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Login"
+          maxlength="3"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Password"
+          maxlength="3"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Confirm Password"
+          maxlength="3"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Email"
+          maxlength="15"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Street"
+          maxlength="15"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Town"
+          maxlength="15"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="ZIP Code"
+          maxlength="6"
+          class="input_newAcc"
+        />
+        <input
+          type="text"
+          placeholder="Phone Number"
+          maxlength="15"
+          class="input_newAcc"
+        />
+      </div>
+    </div>
+  </form>
+  <div class="pop_buttons">
+    <button
+      class="left_btn"
+      id="submit_register"
+    >
+      Submit
+    </button>
+    <button
+      class="left_btn"
+      id="close_pop_window"
+    >
+      Close
+    </button>`;
+  };
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
   mainApp.classList.toggle("disp_none");
   mainApp.classList.toggle("app");
 
@@ -251,3 +460,109 @@ const main = () => {
         </div> */
 };
 main();
+
+{
+  /* <div class="pop_window">
+      <h1
+        class="title_label"
+      >
+        Register New Account
+      </h1>
+      <p
+        class="text_label"
+      >
+        Please provide bellow informations
+      </p>
+      <form>
+        <div class="submit_container">
+          <div class="column_container">
+            <p class="submit_title">First Name :</p>
+            <p class="submit_title">Last Name :</p>
+            <p class="submit_title">Login:</p>
+            <p class="submit_title">Password :</p>
+            <p class="submit_title">Confirm Password :</p>
+            <p class="submit_title">Email :</p>
+            <p class="submit_title">Street :</p>
+            <p class="submit_title">Town :</p>
+            <p class="submit_title">ZIP Code :</p>
+            <p class="submit_title">Phone number :</p>
+          </div>
+          <div class="column_container">
+            <input
+              type="text"
+              placeholder="First Name"
+              maxlength="15"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              maxlength="15"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Login"
+              maxlength="3"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Password"
+              maxlength="3"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Confirm Password"
+              maxlength="3"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              maxlength="15"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Street"
+              maxlength="15"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Town"
+              maxlength="15"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="ZIP Code"
+              maxlength="6"
+              class="input_newAcc"
+            />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              maxlength="15"
+              class="input_newAcc"
+            />
+          </div>
+        </div>
+      </form>
+      <div class="pop_buttons">
+        <button
+          class="left_btn"
+          id="submit_register"
+        >
+          Submit
+        </button>
+        <button
+          class="left_btn"
+          id="close_pop_window"
+        >
+          Close
+        </button>
+      </div> */
+}
