@@ -33,7 +33,7 @@ const main = () => {
     auctions: [],
   };
 
-  const accounts = [
+  let accounts = [
     account1,
     account2,
     account3,
@@ -320,60 +320,70 @@ const main = () => {
           placeholder="First Name"
           maxlength="15"
           class="input_newAcc"
+          id="first_nacc"
         />
         <input
           type="text"
           placeholder="Last Name"
           maxlength="15"
           class="input_newAcc"
+          id="last_nacc"
         />
         <input
           type="text"
           placeholder="Login"
           maxlength="3"
           class="input_newAcc"
+          id="login_nacc"
         />
         <input
           type="text"
           placeholder="Password"
           maxlength="3"
           class="input_newAcc"
+          id="password_nacc"
         />
         <input
           type="text"
           placeholder="Confirm Password"
           maxlength="3"
           class="input_newAcc"
+          id="confirm_nacc"
         />
         <input
           type="text"
           placeholder="Email"
           maxlength="15"
           class="input_newAcc"
+          id="email_nacc"
         />
         <input
           type="text"
           placeholder="Street"
           maxlength="15"
           class="input_newAcc"
+          id="street_nacc"
         />
         <input
           type="text"
           placeholder="Town"
           maxlength="15"
           class="input_newAcc"
+          id="town_nacc"
         />
         <input
           type="text"
           placeholder="ZIP Code"
           maxlength="6"
           class="input_newAcc"
+          id="ZIP_nacc"
         />
         <input
           type="text"
           placeholder="Phone Number"
-          maxlength="15"
+          maxlength="9"
           class="input_newAcc"
+          id="phone_nacc"
         />
       </div>
     </div>
@@ -391,9 +401,178 @@ const main = () => {
     >
       Close
     </button>`;
+    const btnClosePopWindow =
+      document.querySelector(
+        "#close_pop_window"
+      );
+    const btnSubmitNewAccount =
+      document.querySelector(
+        "#submit_register"
+      );
+    const containerSubmit =
+      document.querySelector(
+        ".submit_container"
+      );
+    const inputFirstName =
+      document.querySelector(
+        "#first_nacc"
+      );
+    const inputLastName =
+      document.querySelector(
+        "#last_nacc"
+      );
+    const inputLogin =
+      document.querySelector(
+        "#login_nacc"
+      );
+    const inputPassword =
+      document.querySelector(
+        "#password_nacc"
+      );
+    const inputConfirmPassword =
+      document.querySelector(
+        "#confirm_nacc"
+      );
+    const inputEmail =
+      document.querySelector(
+        "#email_nacc"
+      );
+    const inputStreet =
+      document.querySelector(
+        "#street_nacc"
+      );
+    const inputTown =
+      document.querySelector(
+        "#town_nacc"
+      );
+    const inputZIP =
+      document.querySelector(
+        "#ZIP_nacc"
+      );
+    const inputPhone =
+      document.querySelector(
+        "#phone_nacc"
+      );
+    btnClosePopWindow.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        closeWindow();
+      }
+    );
+    btnSubmitNewAccount.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        //if()
+        let firstNAcc =
+          inputFirstName.value;
+        firstNAcc =
+          stringCorrect(firstNAcc);
+        let LastNAcc =
+          inputLastName.value;
+        LastNAcc =
+          stringCorrect(LastNAcc);
+        const fullNameNAcc =
+          firstNAcc + " " + LastNAcc;
+        const loginNAcc =
+          inputLogin.value.trim();
+        const passwordNAcc =
+          inputPassword.value.trim();
+        const emailNAcc =
+          inputEmail.value.trim();
+        let streetNAcc =
+          inputStreet.value.trim();
+        let townNAcc =
+          inputTown.value.trim();
+        let ZIPNAcc =
+          inputZIP.value.trim();
+        const adressNAcc =
+          stringCorrect(streetNAcc) +
+          ", " +
+          stringCorrect(townNAcc) +
+          " " +
+          ZIPNAcc;
+        const phoneNAcc =
+          inputPhone.value;
+        createNewAccount(
+          fullNameNAcc,
+          loginNAcc,
+          passwordNAcc,
+          emailNAcc,
+          adressNAcc,
+          phoneNAcc
+        );
+        inputFirstName.blur();
+        inputLastName.blur();
+        inputLogin.blur();
+        inputPassword.blur();
+        inputConfirmPassword.blur();
+        inputEmail.blur();
+        inputStreet.blur();
+        inputTown.blur();
+        inputZIP.blur();
+        inputPhone.blur();
+        closeWindow();
+        popWindow.innerHTML = `
+        <h1
+          class="title_label"
+          id="pop_title"
+        >
+          TEST TEST
+        </h1>
+        <p
+          class="text_label"
+          id="pop_text"
+        >
+          Testing testing
+        </p>
+        <div class="pop_buttons">
+          <button
+            class="left_btn"
+            id="close_pop_window"
+          >
+            Close
+          </button>
+        </div>
+      `;
+      }
+    );
   };
 
-  //
+  const createNewAccount = function (
+    name,
+    login,
+    password,
+    email,
+    adress,
+    phoneNumber
+  ) {
+    let newAcc =
+      "account" + (accounts.length + 1);
+    const TempAcc = {
+      name: name,
+      login: login,
+      password: password,
+      email: email,
+      adress: adress,
+      phone: phoneNumber,
+      messages: [],
+      auctions: [],
+    };
+    TempAcc.propertyName = newAcc;
+    accounts.push(TempAcc);
+    return TempAcc;
+  };
+
+  const stringCorrect = function (
+    string
+  ) {
+    let newString = string.trim();
+    return (newString =
+      newString[0].toUpperCase() +
+      newString.slice(1).toLowerCase());
+  };
   //
   //
   //
@@ -460,109 +639,3 @@ const main = () => {
         </div> */
 };
 main();
-
-{
-  /* <div class="pop_window">
-      <h1
-        class="title_label"
-      >
-        Register New Account
-      </h1>
-      <p
-        class="text_label"
-      >
-        Please provide bellow informations
-      </p>
-      <form>
-        <div class="submit_container">
-          <div class="column_container">
-            <p class="submit_title">First Name :</p>
-            <p class="submit_title">Last Name :</p>
-            <p class="submit_title">Login:</p>
-            <p class="submit_title">Password :</p>
-            <p class="submit_title">Confirm Password :</p>
-            <p class="submit_title">Email :</p>
-            <p class="submit_title">Street :</p>
-            <p class="submit_title">Town :</p>
-            <p class="submit_title">ZIP Code :</p>
-            <p class="submit_title">Phone number :</p>
-          </div>
-          <div class="column_container">
-            <input
-              type="text"
-              placeholder="First Name"
-              maxlength="15"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Last Name"
-              maxlength="15"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Login"
-              maxlength="3"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Password"
-              maxlength="3"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Confirm Password"
-              maxlength="3"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              maxlength="15"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Street"
-              maxlength="15"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Town"
-              maxlength="15"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="ZIP Code"
-              maxlength="6"
-              class="input_newAcc"
-            />
-            <input
-              type="text"
-              placeholder="Phone Number"
-              maxlength="15"
-              class="input_newAcc"
-            />
-          </div>
-        </div>
-      </form>
-      <div class="pop_buttons">
-        <button
-          class="left_btn"
-          id="submit_register"
-        >
-          Submit
-        </button>
-        <button
-          class="left_btn"
-          id="close_pop_window"
-        >
-          Close
-        </button>
-      </div> */
-}
