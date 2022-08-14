@@ -42,7 +42,6 @@ const main = () => {
   let currentAccount;
 
   // DOM Elements//
-  //Log in elements
 
   const mainApp =
     document.querySelector("#main");
@@ -66,14 +65,14 @@ const main = () => {
     document.querySelector(
       ".pop_window"
     );
-  const titlePopWindow =
+  let titlePopWindow =
     document.querySelector(
       "#pop_title"
     );
-  const textPopWindow =
+  let textPopWindow =
     document.querySelector("#pop_text");
 
-  const btnClosePopWindow =
+  let btnClosePopWindow =
     document.querySelector(
       "#close_pop_window"
     );
@@ -305,14 +304,14 @@ const main = () => {
       <div class="column_container">
         <p class="submit_title">First Name :</p>
         <p class="submit_title">Last Name :</p>
-        <p class="submit_title">Login:</p>
-        <p class="submit_title">Password :</p>
+        <p class="submit_title">Login (3 char):</p>
+        <p class="submit_title">Password (3 char):</p>
         <p class="submit_title">Confirm Password :</p>
         <p class="submit_title">Email :</p>
         <p class="submit_title">Street :</p>
         <p class="submit_title">Town :</p>
-        <p class="submit_title">ZIP Code :</p>
-        <p class="submit_title">Phone number :</p>
+        <p class="submit_title">ZIP Code (..-... format):</p>
+        <p class="submit_title">Phone number (without +):</p>
       </div>
       <div class="column_container">
         <input
@@ -458,84 +457,97 @@ const main = () => {
       (e) => {
         e.preventDefault();
         closeWindow();
+        resetPopWindow();
       }
     );
     btnSubmitNewAccount.addEventListener(
       "click",
       (e) => {
         e.preventDefault();
-        //if()
-        let firstNAcc =
-          inputFirstName.value;
-        firstNAcc =
-          stringCorrect(firstNAcc);
-        let LastNAcc =
-          inputLastName.value;
-        LastNAcc =
-          stringCorrect(LastNAcc);
-        const fullNameNAcc =
-          firstNAcc + " " + LastNAcc;
-        const loginNAcc =
-          inputLogin.value.trim();
-        const passwordNAcc =
-          inputPassword.value.trim();
-        const emailNAcc =
-          inputEmail.value.trim();
-        let streetNAcc =
-          inputStreet.value.trim();
-        let townNAcc =
-          inputTown.value.trim();
-        let ZIPNAcc =
-          inputZIP.value.trim();
-        const adressNAcc =
-          stringCorrect(streetNAcc) +
-          ", " +
-          stringCorrect(townNAcc) +
-          " " +
-          ZIPNAcc;
-        const phoneNAcc =
-          inputPhone.value;
-        createNewAccount(
-          fullNameNAcc,
-          loginNAcc,
-          passwordNAcc,
-          emailNAcc,
-          adressNAcc,
-          phoneNAcc
-        );
-        inputFirstName.blur();
-        inputLastName.blur();
-        inputLogin.blur();
-        inputPassword.blur();
-        inputConfirmPassword.blur();
-        inputEmail.blur();
-        inputStreet.blur();
-        inputTown.blur();
-        inputZIP.blur();
-        inputPhone.blur();
-        closeWindow();
-        popWindow.innerHTML = `
-        <h1
-          class="title_label"
-          id="pop_title"
-        >
-          TEST TEST
-        </h1>
-        <p
-          class="text_label"
-          id="pop_text"
-        >
-          Testing testing
-        </p>
-        <div class="pop_buttons">
-          <button
-            class="left_btn"
-            id="close_pop_window"
-          >
-            Close
-          </button>
-        </div>
-      `;
+        if (
+          inputFirstName.value.length >
+            0 &&
+          inputLastName.value.length >
+            0 &&
+          inputLogin.value.length ==
+            3 &&
+          inputPassword.value.length ==
+            3 &&
+          inputPassword.value ===
+            inputConfirmPassword.value &&
+          inputEmail.value.length > 0 &&
+          inputEmail.value.includes(
+            "@"
+          ) &&
+          inputStreet.value.length >
+            0 &&
+          inputZIP.value.length > 0 &&
+          inputZIP.value.includes(
+            "-"
+          ) &&
+          Number(
+            inputZIP.value.replace(
+              "-",
+              ""
+            )
+          ) > 0 &&
+          inputTown.value.length > 0 &&
+          inputPhone.value.length > 0 &&
+          Number(inputPhone.value) > 0
+        ) {
+          let firstNAcc =
+            inputFirstName.value;
+          firstNAcc =
+            stringCorrect(firstNAcc);
+          let LastNAcc =
+            inputLastName.value;
+          LastNAcc =
+            stringCorrect(LastNAcc);
+          const fullNameNAcc =
+            firstNAcc + " " + LastNAcc;
+          const loginNAcc =
+            inputLogin.value.trim();
+          const passwordNAcc =
+            inputPassword.value.trim();
+          const emailNAcc =
+            inputEmail.value.trim();
+          let streetNAcc =
+            inputStreet.value.trim();
+          let townNAcc =
+            inputTown.value.trim();
+          let ZIPNAcc =
+            inputZIP.value.trim();
+          const adressNAcc =
+            stringCorrect(streetNAcc) +
+            ", " +
+            stringCorrect(townNAcc) +
+            " " +
+            ZIPNAcc;
+          const phoneNAcc =
+            +inputPhone.value;
+          createNewAccount(
+            fullNameNAcc,
+            loginNAcc,
+            passwordNAcc,
+            emailNAcc,
+            adressNAcc,
+            phoneNAcc
+          );
+          resetPopWindow();
+          closeWindow();
+          dispPopWindow(
+            "Account created",
+            "Your Account has been created, now you can log in"
+          );
+          //email sent....
+        } else {
+          resetPopWindow();
+          closeWindow();
+          dispPopWindow(
+            "Account not-created",
+            "Not all blank spaces were filled or data was wrong"
+          );
+        }
       }
     );
   };
@@ -572,6 +584,49 @@ const main = () => {
     return (newString =
       newString[0].toUpperCase() +
       newString.slice(1).toLowerCase());
+  };
+  const resetPopWindow = () => {
+    popWindow.innerHTML = `
+        <h1
+          class="title_label"
+          id="pop_title"
+        >
+          TEST TEST
+        </h1>
+        <p
+          class="text_label"
+          id="pop_text"
+        >
+          Testing testing
+        </p>
+        <div class="pop_buttons">
+          <button
+            class="left_btn"
+            id="close_pop_window"
+          >
+            Close
+          </button>
+        </div>
+      `;
+    titlePopWindow =
+      document.querySelector(
+        "#pop_title"
+      );
+    textPopWindow =
+      document.querySelector(
+        "#pop_text"
+      );
+    btnClosePopWindow =
+      document.querySelector(
+        "#close_pop_window"
+      );
+    btnClosePopWindow.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        closeWindow();
+      }
+    );
   };
   //
   //
