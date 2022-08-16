@@ -413,10 +413,12 @@
   color: white;
 }
 #close_pop_window:hover,
-#submit_register:hover {
+#submit_register:hover,
+#submit_RecoveryPass:hover {
   background-color: grey;
 }
-#submit_register {
+#submit_register,
+#submit_RecoveryPass {
   background-color: black;
   color: white;
   margin-right: 15px;
@@ -442,4 +444,8 @@
   height: 20px;
   margin-bottom: 10px;
   border-radius: 5px;
+}
+#login_RecPass {
+  margin-left: 20%;
+  margin-bottom: 5%;
 }

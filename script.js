@@ -6,7 +6,7 @@ const main = () => {
     name: "Jan Kowalski",
     login: "qwe",
     password: "123",
-    email: "jankowalski@gmail.com",
+    email: "kubarak1939@gmail.com",
     adress: "Krzywa 10 Kraków",
     phone: "887855697",
     messages: [],
@@ -39,7 +39,7 @@ const main = () => {
     account3,
   ];
 
-  let currentAccount;
+  let currentAccount = "";
 
   // DOM Elements//
 
@@ -81,6 +81,10 @@ const main = () => {
     document.querySelector(
       "#register_btn"
     );
+  const btnRecoveryPass =
+    document.querySelector(
+      "#recover_btn"
+    );
   //Png buttons
   const lang =
     document.querySelector(".languge");
@@ -111,6 +115,14 @@ const main = () => {
     (e) => {
       e.preventDefault();
       registerWindow();
+    }
+  );
+
+  btnRecoveryPass.addEventListener(
+    "click",
+    (e) => {
+      e.preventDefault();
+      recoverWindow();
     }
   );
   //Btn changes colors with img
@@ -627,6 +639,124 @@ const main = () => {
         closeWindow();
       }
     );
+  };
+
+  const recoverWindow = () => {
+    popWindow.classList.toggle(
+      "disp_none"
+    );
+    popWindow.innerHTML = `<h1
+    class="title_label"
+  >
+    Recovery your Password
+  </h1>
+  <p
+    class="text_label"
+  >
+    Please enter your login to recovery your password
+  </p>
+  <form>
+    <div class="submit_container">
+        <p class="submit_title">Login :</p>
+        <input
+          type="text"
+          placeholder="Login"
+          maxlength="3"
+          class="input_newAcc"
+          id="login_RecPass"
+        />
+    </div>
+  </form>
+  <div class="pop_buttons">
+    <button
+      class="left_btn"
+      id="submit_RecoveryPass"
+    >
+      Submit
+    </button>
+    <button
+      class="left_btn"
+      id="close_pop_window"
+    >
+      Close
+    </button>`;
+    const btnClosePopWindow =
+      document.querySelector(
+        "#close_pop_window"
+      );
+    const btnSubmitRecPass =
+      document.querySelector(
+        "#submit_RecoveryPass"
+      );
+    const inputLoginRecPass =
+      document.querySelector(
+        "#login_RecPass"
+      );
+
+    btnClosePopWindow.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        closeWindow();
+        resetPopWindow();
+      }
+    );
+    btnSubmitRecPass.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        currentAccount = accounts.find(
+          (acc) =>
+            acc.login ===
+            inputLoginRecPass.value
+        );
+        if (currentAccount) {
+          resetPopWindow();
+          closeWindow();
+          let emailtext = `Your PASSWORD is : ${currentAccount.password} \n And LOGIN: ${currentAccount.login}.`;
+          sendEmail(
+            "Recovery email",
+            emailtext,
+            currentAccount.email
+          );
+          currentAccount = "";
+        } else {
+          resetPopWindow();
+          closeWindow();
+          dispPopWindow(
+            "Recovery email",
+            "There is none account with this login"
+          );
+        }
+      }
+    );
+  };
+
+  const sendEmail = function (
+    title,
+    text,
+    email
+  ) {
+    Email.send({
+      SecureToken:
+        "164ad37e-af2d-4ea7-8b53-4f99c4abf814",
+      To: email,
+      From: "sklepafk@gmail.com",
+      Subject: title,
+      Body: text,
+    }).then((message) => {
+      if (message === "OK") {
+        dispPopWindow(
+          "Recovery email",
+          "Email was send to you"
+        );
+      } else {
+        dispPopWindow(
+          "Recovery email",
+          "There were error while sending Email"
+        );
+      }
+    });
   };
   //
   //
