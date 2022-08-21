@@ -507,7 +507,8 @@ const main = () => {
     if (
       !(
         +e.target.value > -1 &&
-        e.target.value.length === 9
+        (e.target.value.length === 9 ||
+          e.target.value.length === 7)
       )
     ) {
       e.target.classList.add(
@@ -1020,7 +1021,7 @@ class="text_label"
 Please enter your login to recovery your password
 </p>
 <form>
-<div class="submit_container">
+<div class="name-input_container">
     <p class="submit_title">Login :</p>
     <input
       type="text"
