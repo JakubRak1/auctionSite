@@ -1,38 +1,30 @@
 "use strict";
 // Data
 
-const main = () => {
-  const account1 = {
-    name: "Jan Kowalski",
-    login: "qwe",
-    password: "123",
-    email: "kubarak1939@gmail.com",
-    adress: "Krzywa 10 Kraków",
-    phone: "887855697",
-    messages: [],
-    auctions: [],
-  };
-  const account2 = {
-    name: "Mateusz Bendarski",
-    login: "asd",
-    password: "321",
-    email: "mateuszek@gmail.com",
-    adress: "Pokrzeczna 10 Kraków",
-    phone: "785987456",
-    messages: [],
-    auctions: [],
-  };
-  const account3 = {
-    name: "Magdalena Biernacz",
-    login: "zxc",
-    password: "987",
-    email: "madzia@gmail.com",
-    adress: "Krzywa 10 Wrocław",
-    phone: "236547892",
-    messages: [],
-    auctions: [],
-  };
+import {
+  account1,
+  account2,
+  account3,
+} from "./data";
+import {
+  registerHTML,
+  recoverHTML,
+  resetHTML,
+} from "./html-form";
+import {
+  checkInputs,
+  checkEmailInput,
+  checkConfirmInput,
+  checkAreaInput,
+  checkPhoneInput,
+} from "./function-check-Inputs";
+import { stringCorrect } from "./corecrtionString-function";
+import {
+  securedToken,
+  mailFrom,
+} from "./email";
 
+const main = () => {
   let accounts = [
     account1,
     account2,
@@ -373,172 +365,6 @@ const main = () => {
     );
   };
 
-  const checkInputs = (e, text) => {
-    if (!e.target.value) {
-      e.target.classList.add(
-        "red_border"
-      );
-      const parent = e.target.closest(
-        ".name-input_container"
-      );
-      if (!parent.nextElementSibling)
-        parent.insertAdjacentHTML(
-          "afterend",
-          `<p class="eror_space">${text}</p>`
-        );
-    } else {
-      e.target.classList.remove(
-        "red_border"
-      );
-      if (
-        e.target.closest(
-          ".name-input_container"
-        ).nextElementSibling
-      ) {
-        const parent = e.target.closest(
-          ".name-input_container"
-        );
-        parent.nextElementSibling.remove();
-      }
-    }
-  };
-
-  const checkConfirmInput = (
-    e,
-    text,
-    compare
-  ) => {
-    if (e.target.value != compare) {
-      e.target.classList.add(
-        "red_border"
-      );
-      const parent = e.target.closest(
-        ".name-input_container"
-      );
-      if (!parent.nextElementSibling)
-        parent.insertAdjacentHTML(
-          "afterend",
-          `<p class="eror_space">${text}</p>`
-        );
-    } else {
-      e.target.classList.remove(
-        "red_border"
-      );
-      if (
-        e.target.closest(
-          ".name-input_container"
-        ).nextElementSibling
-      ) {
-        const parent = e.target.closest(
-          ".name-input_container"
-        );
-        parent.nextElementSibling.remove();
-      }
-    }
-  };
-
-  const checkEmailInput = (e, text) => {
-    if (!e.target.value.includes("@")) {
-      e.target.classList.add(
-        "red_border"
-      );
-      const parent = e.target.closest(
-        ".name-input_container"
-      );
-      if (!parent.nextElementSibling)
-        parent.insertAdjacentHTML(
-          "afterend",
-          `<p class="eror_space">${text}</p>`
-        );
-    } else {
-      e.target.classList.remove(
-        "red_border"
-      );
-      if (
-        e.target.closest(
-          ".name-input_container"
-        ).nextElementSibling
-      ) {
-        const parent = e.target.closest(
-          ".name-input_container"
-        );
-        parent.nextElementSibling.remove();
-      }
-    }
-  };
-  const checkAreaInput = (e, text) => {
-    if (
-      !(
-        e.target.value.includes("+") &&
-        +e.target.value.replace(
-          "+",
-          ""
-        ) > -1
-      )
-    ) {
-      e.target.classList.add(
-        "red_border"
-      );
-      const parent = e.target.closest(
-        ".name-input_container"
-      );
-      if (!parent.nextElementSibling)
-        parent.insertAdjacentHTML(
-          "afterend",
-          `<p class="eror_space">${text}</p>`
-        );
-    } else {
-      e.target.classList.remove(
-        "red_border"
-      );
-      if (
-        e.target.closest(
-          ".name-input_container"
-        ).nextElementSibling
-      ) {
-        const parent = e.target.closest(
-          ".name-input_container"
-        );
-        parent.nextElementSibling.remove();
-      }
-    }
-  };
-  const checkPhoneInput = (e, text) => {
-    if (
-      !(
-        +e.target.value > -1 &&
-        (e.target.value.length === 9 ||
-          e.target.value.length === 7)
-      )
-    ) {
-      e.target.classList.add(
-        "red_border"
-      );
-      const parent = e.target.closest(
-        ".name-input_container"
-      );
-      if (!parent.nextElementSibling)
-        parent.insertAdjacentHTML(
-          "afterend",
-          `<p class="eror_space">${text}</p>`
-        );
-    } else {
-      e.target.classList.remove(
-        "red_border"
-      );
-      if (
-        e.target.closest(
-          ".name-input_container"
-        ).nextElementSibling
-      ) {
-        const parent = e.target.closest(
-          ".name-input_container"
-        );
-        parent.nextElementSibling.remove();
-      }
-    }
-  };
-
   const createNewAccount = function (
     name,
     login,
@@ -564,14 +390,6 @@ const main = () => {
     return TempAcc;
   };
 
-  const stringCorrect = function (
-    string
-  ) {
-    let newString = string.trim();
-    return (newString =
-      newString[0].toUpperCase() +
-      newString.slice(1).toLowerCase());
-  };
   const resetPopWindow = () => {
     popWindow.innerHTML = resetHTML;
     titlePopWindow =
@@ -658,10 +476,9 @@ const main = () => {
     email
   ) {
     Email.send({
-      SecureToken:
-        "2df2fb66-bacd-4d0e-af71-5ed0ae036c05",
+      SecureToken: securedToken,
       To: email,
-      From: "kubarak39@gmail.com",
+      From: mailFrom,
       Subject: title,
       Body: text,
     }).then((message) => {
@@ -848,224 +665,5 @@ const main = () => {
         </div> */
 
   ////// HTML elements
-  const registerHTML = `<h1 class="title_label">
-  Register New Account
-</h1>
-<p class="text_label">
-  Please provide bellow informations
-</p>
-<form>
-  <div class="column_container">
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          First Name :
-        </p>
-        <input
-          type="text"
-          placeholder="First Name"
-          class="input_newAcc"
-          id="first_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Last Name :
-        </p>
-        <input
-          type="text"
-          placeholder="Last Name"
-          class="input_newAcc"
-          id="last_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Login :
-        </p>
-        <input
-          type="text"
-          placeholder="Login"
-          class="input_newAcc"
-          id="login_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Password :
-        </p>
-        <input
-          type="text"
-          placeholder="Password"
-          class="input_newAcc"
-          id="password_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Confirm Password :
-        </p>
-        <input
-          type="text"
-          placeholder="Confirm Password"
-          class="input_newAcc"
-          id="confirm_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Email :
-        </p>
-        <input
-          type="text"
-          placeholder="Email"
-          class="input_newAcc"
-          id="email_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Street :
-        </p>
-        <input
-          type="text"
-          placeholder="Street"
-          class="input_newAcc"
-          id="street_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Town :
-        </p>
-        <input
-          type="text"
-          placeholder="Town"
-          class="input_newAcc"
-          id="town_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          ZIP Code :
-        </p>
-        <input
-          type="text"
-          maxlength="6"
-          placeholder="ZIP Code"
-          class="input_newAcc"
-          id="ZIP_nacc"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="name-input_container">
-        <p class="submit_title">
-          Phone number :
-        </p>
-        <input
-          type="text"
-          placeholder="Area Code"
-          class="input_newAcc"
-          id="areacode_nacc"
-        />
-        <input
-          type="text"
-          placeholder="Phone Number"
-          class="input_newAcc"
-          id="phone_nacc"
-        />
-      </div>
-    </div>
-  </div>
-</form>
-<div class="pop_buttons">
-  <button
-    class="left_btn"
-    id="submit_register"
-  >
-    Submit
-  </button>
-  <button
-    class="left_btn"
-    id="close_pop_window"
-  >
-    Close
-  </button>
-</div>
-`;
-  const recoverHTML = `<h1
-class="title_label"
->
-Recovery your Password
-</h1>
-<p
-class="text_label"
->
-Please enter your login to recovery your password
-</p>
-<form>
-<div class="name-input_container">
-    <p class="submit_title">Login :</p>
-    <input
-      type="text"
-      placeholder="Login"
-      maxlength="3"
-      class="input_newAcc"
-      id="login_RecPass"
-    />
-</div>
-</form>
-<div class="pop_buttons">
-<button
-  class="left_btn"
-  id="submit_RecoveryPass"
->
-  Submit
-</button>
-<button
-  class="left_btn"
-  id="close_pop_window"
->
-  Close
-</button>`;
-  const resetHTML = `
-<h1
-  class="title_label"
-  id="pop_title"
->
-  TEST TEST
-</h1>
-<p
-  class="text_label"
-  id="pop_text"
->
-  Testing testing
-</p>
-<div class="pop_buttons">
-  <button
-    class="left_btn"
-    id="close_pop_window"
-  >
-    Close
-  </button>
-</div>
-`;
 };
 main();
