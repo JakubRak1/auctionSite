@@ -1,6 +1,18 @@
-# auctionSite
+# AuctionSite
+___
+## Technology:
+[![My Skills](https://skillicons.dev/icons?i=webpack,js,css,html)](https://skillicons.dev)
 
-For test use this logins and password
-1. login: qwe password: 123
-2. login: asd password: 321
-3. login: zxc password: 987
+---
+## App created based on JavaScript vanila
+## for test porpose use:
+* User1
+    * Login: qwe
+    * Password: 123
+* User2
+    * Login: asd
+    * Password: 321
+* User3
+    * Login: zxc
+    * Password: 987
+
